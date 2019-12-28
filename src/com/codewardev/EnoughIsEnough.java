@@ -11,14 +11,13 @@ public class EnoughIsEnough {
 	public static int[] deleteNth(int[] elements, int maxOccur) {
 		if(elements.length == 0) return elements;
 		
-		int max=Arrays.stream(elements).max().getAsInt();
-		int[] occur = new int[max+1];
+		int[] occur = new int[Arrays.stream(elements).max().getAsInt()+1];
 		List<Integer> newList = new ArrayList<Integer>();
 		
-		for(int i=0; i<elements.length; i++) {
-			if(occur[elements[i]] < maxOccur){
-				occur[elements[i]]++;
-				newList.add(elements[i]);
+		for(int x: elements) {
+			if(occur[x] < maxOccur){
+				occur[x]++;
+				newList.add(x);
 			}
 		}
 		return newList.stream().mapToInt(Integer::valueOf).toArray();
